@@ -1,0 +1,15 @@
+<div style="height: 100vh; width: 100vw; background-color: bisque;overflow-x: hidden;">
+
+    <div style="width: 100vw; height: 6.5%;background-color: blue;text-align: center;overflow-y: hidden;">
+        <h1 style="font-size: 30px; margin-top: 8px;color: azure;"><b><i>{{parentProductName}}</i></b></h1>
+    </div>
+    <button style="float: right;height: 40px;width: 100px;border-radius: 7px;margin-top: 5px;background-color: cadetblue;margin-right: 10px;" (click)="addSubProduct()">+Add New</button>
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center;margin-top: 50px;">
+        <div style="margin-top: 10px;padding: 10px;overflow-x: hidden;" *ngFor="let item of subProductList">
+            <img src={{item.imageUrl}} alt="" style="height: 200px;">
+            <h3 style="margin-left: 70px;">{{item.subProductName}}</h3>
+        </div>
+       
+
+    </div>
+</div>

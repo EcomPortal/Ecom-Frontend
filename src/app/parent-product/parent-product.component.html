@@ -1,0 +1,21 @@
+<div style="height: 100%; width: 100%; background-color: cadetblue; overflow-x: hidden;">
+    <form>
+    <h1 style="text-align: center; margin-top: 70px; font-size: 30px; color: whitesmoke">Add New Product</h1>
+
+    <div
+        style="overflow-x: hidden; display: flex; flex-direction: column; margin-left: 25%; background-color: #E8A87C;width: 50%; height: 80%; border-radius: 20px;box-shadow: 4px 10px 4px gray; padding: 30px;">
+        <div style="display: flex;justify-content: center;flex-direction: column; margin-top: 30px; padding: 10px; margin-left: 20%;">
+            <input type="text"
+                style="width: 500px; background-color: transparent; height: 70px; color: #1a1a1d;font-size: 15px; outline: none; border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                placeholder="ProductName" #productName="ngModel" [(ngModel)]="parentProduct.productName" name="productName">
+            <input type="text"
+                style="width: 500px; background-color: transparent; height: 70px; color: #1a1a1d;font-size: 15px; outline: none; margin-top: 30px;border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                placeholder="ImageUrl" #imageUrl="ngModel" [(ngModel)]="parentProduct.imageUrl" name="imageUrl">
+        </div>
+        <div style="display: flex; justify-content: center; padding: 10px;margin-top: 20px;">
+            <button style="height: 50px; width: 90px;border-radius: 10px;background-color: rgb(37, 37, 168); margin-left: 290px;color: aliceblue;" (click)="addParentProduct()">Submit</button>
+            <button style="height: 50px; width: 90px;border-radius: 10px;background-color: blue; margin-left: 15px; color: antiquewhite;" routerLink="/dashboard">Cancel</button>
+        </div>
+    </div>
+</form>
+</div>
