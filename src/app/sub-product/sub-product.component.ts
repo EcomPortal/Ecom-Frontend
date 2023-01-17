@@ -15,7 +15,18 @@ export class SubProductComponent implements OnInit{
     parentProductName:any
     productSubProductList:any=[]
     subProductList:any=[]
+    userType:any
+    userTypeValue:string=''
+    addButton:boolean=false
   ngOnInit(){
+    this.userType=localStorage.getItem("userType")
+    this.userTypeValue=String(this.userType)
+    if(this.userTypeValue==="Owner"){
+        this.addButton=true
+    }
+    else{
+      this.addButton=false
+    }
     this.id=this.activateRoute.snapshot.params['id']
     this.loginService.getSubProduct(this.id).subscribe(
       data=>{
@@ -35,5 +46,16 @@ export class SubProductComponent implements OnInit{
     console.log("hello")
     this.id=this.activateRoute.snapshot.params['id']
     this.router.navigate(['subProductAdd',this.id])
+  }
+
+  logout(){
+     localStorage.removeItem("token")
+     localStorage.removeItem("userType")
+     this.router.navigate(['/'])
+  }
+
+  getProducts(id:number){
+    // console.log(id)
+    this.router.navigate(['productDetails',id])
   }
 }

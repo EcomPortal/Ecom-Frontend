@@ -10,10 +10,22 @@ import { LoginServiceService } from '../service/login-service.service';
 export class DashboardComponent implements OnInit{
 
   parentDataArray:any=[]
+  userType:any
+  userTypeValue:string=''
+  addButton:boolean=false
   constructor(private router:Router,
     private loginService:LoginServiceService,
     private activateRoute:ActivatedRoute){}
   ngOnInit() {
+    this.userType=localStorage.getItem("userType")
+    this.userTypeValue=String(this.userType)
+    if(this.userTypeValue==="Owner"){
+        this.addButton=true
+    }
+    else{
+      this.addButton=false
+    }
+    
     this.loginService.getParentProductData().subscribe(
       data=>{
         this.parentDataArray=data
@@ -26,6 +38,7 @@ export class DashboardComponent implements OnInit{
 
   logout(){
     localStorage.removeItem("token")
+    localStorage.removeItem("userType")
     this.router.navigate(['/'])
   }
 

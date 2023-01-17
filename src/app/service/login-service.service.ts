@@ -6,6 +6,7 @@ export class UserLogin{
   password:string=''
   token:string=''
   userName:string=''
+  userType: string=''
 }
 
 export class UserRegister{
@@ -30,6 +31,16 @@ subProductName:string=''
 imageUrl:string=''
 parentProductId:string=''
 }
+export class Product{
+    id:number=0
+    availableStock: number=0
+    modelName: string=''
+    price:number=0
+    productImage: string=''
+    productName: string=''
+    subProductId:number =0
+  
+}
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +55,7 @@ export class LoginServiceService {
   isLoggedIn:boolean=false
   parentProduct:ParentProduct=new ParentProduct
   subProduct:SubProduct=new SubProduct
+  product:Product=new Product
   constructor(private http:HttpClient) { }
    baseUrl:string='http://192.168.12.51:9090/'
   login(user:any){
@@ -93,5 +105,39 @@ export class LoginServiceService {
       "Authorization","Bearer "+localStorage.getItem("token") || '{}'
     );
     return this.http.get(this.baseUrl+'getAll/subProduct/'+id,{headers:header})
+  }
+
+  saveProduct(product:any){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.post<Product>(this.baseUrl+'add/product',product,{headers:header})
+  }
+
+  getAllProduct(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getAll/product/'+id,{headers:header})
+  }
+
+  getProductById(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getById/product/'+id,{headers:header})
+  }
+
+  updateProduct(product:any){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.post<Product>(this.baseUrl+'update/product',product,{headers:header})
+  }
+  deleteProduct(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.delete(this.baseUrl+'delete/product/'+id,{headers:header})
   }
 }

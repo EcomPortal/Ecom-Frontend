@@ -17,6 +17,7 @@ export class LoginComponentComponent {
     this.loginService.login(this.userLogin).subscribe(
       data=>{
         localStorage.setItem("token",data.token)
+        localStorage.setItem("userType",data.userType)
         window.alert("Welcome "+data.userName)
         this.router.navigate(['dashboard'])
       },

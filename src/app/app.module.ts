@@ -19,6 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ParentProductComponent } from './parent-product/parent-product.component';
 import { SubProductComponent } from './sub-product/sub-product.component';
 import { SubproductformComponent } from './subproductform/subproductform.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
@@ -32,7 +34,9 @@ import { SubproductformComponent } from './subproductform/subproductform.compone
     LogoutComponent,
     ParentProductComponent,
     SubProductComponent,
-    SubproductformComponent
+    SubproductformComponent,
+    ProductDetailsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

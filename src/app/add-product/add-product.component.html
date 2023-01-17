@@ -1,0 +1,39 @@
+<div style="height: 100%; width: 100%; background-color: cadetblue; overflow-x: hidden;">
+    <form>
+        <h1 style="text-align: center; margin-top: 70px; font-size: 30px; color: whitesmoke">Add New Sub Product</h1>
+
+        <div
+            style="overflow-x: hidden; display: flex; flex-direction: column; margin-left: 30%; background-color: #E8A87C;width: 40%; height: 80%; border-radius: 20px;box-shadow: 4px 10px 4px gray; padding: 20px;">
+            <div
+                style="display: flex;justify-content: center;flex-direction: column; margin-top: 30px; padding: 10px; margin-left: 10%;">
+                <input type="text"
+                    style="width: 500px; background-color: transparent; height: 50px; color: #1a1a1d;font-size: 15px; outline: none; border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                    placeholder="Product Name" #productName="ngModel" [(ngModel)]="product.productName"
+                    name="productName">
+                <input type="text"
+                    style="width: 500px; background-color: transparent; height: 50px; color: #1a1a1d;font-size: 15px; outline: none; margin-top: 17px;border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                    placeholder="ImageUrl" #productImage="ngModel" [(ngModel)]="product.productImage" name="productImage">
+                <input type="text"
+                    style="width: 500px; background-color: transparent; height: 50px; color: #1a1a1d;font-size: 15px; outline: none;margin-top: 17px; border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                    placeholder="Model Name" #modelName="ngModel" [(ngModel)]="product.modelName"
+                    name="modelName">
+                <input type="text"
+                    style="width: 500px; background-color: transparent; height: 50px; color: #1a1a1d;font-size: 15px; outline: none;margin-top: 17px; border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                    placeholder="Price" #price="ngModel" [(ngModel)]="product.price"
+                    name="price">
+                <input type="text"
+                    style="width: 500px; background-color: transparent; height: 50px; color: #1a1a1d;font-size: 15px; outline: none;margin-top: 17px; border-bottom: 2px solid cadetblue; border-radius: 10px;font-size: 20px;border-top: 2px solid cadetblue;border-left: 2px solid cadetblue;border-right: 2px solid cadetblue;"
+                    placeholder="Stock" #availableStock="ngModel" [(ngModel)]="product.availableStock"
+                    name="availableStock">
+            </div>
+            <div style="display: flex; justify-content: center; padding: 10px;margin-top: 20px;">
+                <button
+                    style="height: 50px; width: 90px;border-radius: 10px;background-color: rgb(37, 37, 168); margin-left: 290px;color: aliceblue;"
+                    (click)="addProduct()">Submit</button>
+                <button
+                    style="height: 50px; width: 90px;border-radius: 10px;background-color: blue; margin-left: 15px; color: antiquewhite;"
+                    (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
