@@ -59,4 +59,8 @@ export class ProductDetailsComponent implements OnInit{
       }
     );
   }
+
+  backToSubproducts(){
+    this.router.navigate(['subproduct',this.activateRoute.snapshot.params['id']])
+  }
 }
