@@ -25,6 +25,7 @@ export class ForgetPassword{
   email:string=''
   password:string=''
   retypePassword:string=''
+  otp:string=''
 }
 export class SubProduct{
 subProductName:string=''
@@ -57,7 +58,7 @@ export class LoginServiceService {
   subProduct:SubProduct=new SubProduct
   product:Product=new Product
   constructor(private http:HttpClient) { }
-   baseUrl:string='http://192.168.12.41:9090/'
+   baseUrl:string='http://192.168.12.51:9090/'
   login(user:any){
     this.isLoggedIn=true
     return this.http.post<UserLogin>(this.baseUrl+"user/v1/signIn",user)
@@ -139,5 +140,16 @@ export class LoginServiceService {
       "Authorization","Bearer "+localStorage.getItem("token") || '{}'
     );
     return this.http.delete(this.baseUrl+'delete/product/'+id,{headers:header})
+  }
+
+  getProductDetailsById(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getByUserId/productDescription/'+id,{headers:header})
+  }
+  generateOtp(email:string){
+    
+    return this.http.post(this.baseUrl+'user/v1/generateOtp',email)
   }
 }

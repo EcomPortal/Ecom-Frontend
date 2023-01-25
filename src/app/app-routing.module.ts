@@ -7,6 +7,7 @@ import { LoginComponentComponent } from './login/login-component/login-component
 import { LogoutComponent } from './logout/logout.component';
 import { ParentProductComponent } from './parent-product/parent-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 import { RouterGuardServiceService } from './router-guard-service.service';
 import { RegistrationFormComponent } from './signup/registration-form/registration-form.component';
 import { SubProductComponent } from './sub-product/sub-product.component';
@@ -54,8 +55,16 @@ const routes: Routes = [
     component:ProductDetailsComponent
   },
   {
+    path:'addProduct',
+    component:AddProductComponent
+  },
+  {
     path:'addProduct/:id',
     component:AddProductComponent
+  },
+  {
+    path:'productPage/:id',
+    component:ProductPageComponent
   }
 ];
 

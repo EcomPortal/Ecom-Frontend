@@ -10,22 +10,31 @@ import { LoginServiceService, Product } from '../service/login-service.service';
 export class AddProductComponent implements OnInit{
 product:Product=new Product
 dataObject:any
+subproductId:number=0
 constructor(private router:Router,
   private loginService:LoginServiceService,
-  private activateRoute:ActivatedRoute){}
+  private activateRoute:ActivatedRoute){
+    // this.dataObject=this.router.getCurrentNavigation().extras.state.id;
+  }
   ngOnInit(){
-     this.loginService.getProductById(this.activateRoute.snapshot.params['id']).subscribe(
-      data=>{
-        this.dataObject=data
-        this.product.id=this.dataObject.id
-        this.product.modelName=this.dataObject.modelName
-        this.product.price=this.dataObject.price
-        this.product.availableStock=this.dataObject.availableStock
-        this.product.productImage=this.dataObject.productImage
-        this.product.productName=this.dataObject.productName
-        this.product.subProductId=this.dataObject.subProductId
-      }
-     );
+    if(this.activateRoute.snapshot.params['id']){
+      this.loginService.getProductById(this.activateRoute.snapshot.params['id']).subscribe(
+        data=>{
+          this.dataObject=data
+          this.product.id=this.dataObject.id
+          this.product.modelName=this.dataObject.modelName
+          this.product.price=this.dataObject.price
+          this.product.availableStock=this.dataObject.availableStock
+          this.product.productImage=this.dataObject.productImage
+          this.product.productName=this.dataObject.productName
+          this.product.subProductId=this.dataObject.subProductId
+        }
+       );
+    }
+
+    
+    
+     
   }
 
   addProduct(){
@@ -41,10 +50,11 @@ constructor(private router:Router,
       );
     }
     else{
-      this.product.subProductId=this.activateRoute.snapshot.params['id']
+      this.product.subProductId=history.state.id
+      console.log(this.product.subProductId)
       this.loginService.saveProduct(this.product).subscribe(
         data=>{
-          this.router.navigate(['productDetails',this.activateRoute.snapshot.params['id']])
+          this.router.navigate(['productDetails',this.product.subProductId])
         },
         error=>{
           console.log(error)
@@ -54,6 +64,12 @@ constructor(private router:Router,
     
   }
   cancel(){
-     this.router.navigate(['productDetails',this.activateRoute.snapshot.params['id']])
+    if(history.state){
+      this.router.navigate(['productDetails',history.state.id])
+  }
+    else{
+
+      this.router.navigate(['productDetails',this.activateRoute.snapshot.params['id']])
+    }
   }
 }

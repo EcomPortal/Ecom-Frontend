@@ -12,12 +12,15 @@ export class LoginComponentComponent {
   constructor(private loginService:LoginServiceService,
     private router:Router) {}
   userLogin:UserLogin=new UserLogin
- 
+  userData:any
   login(){
     this.loginService.login(this.userLogin).subscribe(
       data=>{
+        console.log(data)
+        this.userData=data
         localStorage.setItem("token",data.token)
         localStorage.setItem("userType",data.userType)
+        localStorage.setItem('userId',this.userData.id)
         window.alert("Welcome "+data.userName)
         this.router.navigate(['dashboard'])
       },

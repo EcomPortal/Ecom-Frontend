@@ -8,7 +8,7 @@ import { ForgetPassword, LoginServiceService } from '../service/login-service.se
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent {
-
+    otpFieldShow:boolean=false
     forget:ForgetPassword=new ForgetPassword
     retypePassword:string=''
     constructor(private loginService:LoginServiceService,private router:Router){}
@@ -20,12 +20,20 @@ export class ForgetPasswordComponent {
             this.router.navigate(['/'])
           },
           error=>{
-            console.log(error)
+            window.alert("Enter valid Otp..")
           }
         );
       }
       else{
         window.alert("Password Mismatched..")
       }
+    }
+    generateOtp(){
+      this.loginService.generateOtp(this.forget.email).subscribe(
+        data=>{
+          window.alert("Otp sent succesfully")
+          this.otpFieldShow=true
+        }
+      );
     }
 }

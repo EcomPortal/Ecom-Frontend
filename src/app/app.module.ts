@@ -21,6 +21,9 @@ import { SubProductComponent } from './sub-product/sub-product.component';
 import { SubproductformComponent } from './subproductform/subproductform.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 
 
@@ -36,7 +39,10 @@ import { AddProductComponent } from './add-product/add-product.component';
     SubProductComponent,
     SubproductformComponent,
     ProductDetailsComponent,
-    AddProductComponent
+    AddProductComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

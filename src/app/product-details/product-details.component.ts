@@ -13,16 +13,29 @@ export class ProductDetailsComponent implements OnInit{
   subproductName:any
   productList:any=[]
   product:Product=new Product
+  addButton:boolean=false
+  userType:any
+  userTypeValue:string=''
+  subProductId:number=0
   constructor(private activateRoute:ActivatedRoute,
     private router:Router,private loginService:LoginServiceService){}
   
   ngOnInit(){
+    this.userType=localStorage.getItem("userType")
+    this.userTypeValue=String(this.userType)
+    if(this.userTypeValue==="Owner"){
+        this.addButton=true
+    }
+    else{
+      this.addButton=false
+    }
     this.loginService.getAllProduct(this.activateRoute.snapshot.params['id']).subscribe(
       data=>{
         this.productObj=data
         this.subproductName=this.productObj.subProductName
         this.productList=this.productObj.productList
-        console.log(this.productList)
+        this.subProductId=this.productObj.parentId
+        // console.log(this.productList)
       },
       error=>{
         console.log(error)
@@ -31,7 +44,7 @@ export class ProductDetailsComponent implements OnInit{
   }
   addProduct(){
      this.id=this.activateRoute.snapshot.params['id']
-     this.router.navigate(['addProduct',this.id])
+     this.router.navigate(['addProduct'],{state:{id:this.id}})
   }
 
   updateProduct(product:any){
@@ -61,6 +74,15 @@ export class ProductDetailsComponent implements OnInit{
   }
 
   backToSubproducts(){
-    this.router.navigate(['subproduct',this.activateRoute.snapshot.params['id']])
+    this.router.navigate(['subproduct',this.subProductId])
   }
+  logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("userType")
+    localStorage.removeItem('userId')
+    this.router.navigate(['/'])
+ }
+ redirectProductPage(id:number){
+  this.router.navigate(['productPage',id])
+ }
 }

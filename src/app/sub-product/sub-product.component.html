@@ -5,18 +5,19 @@
     <div style="width: 100vw; height: 6.5%;background-color: rgb(99, 99, 168);text-align: center;overflow-y: hidden;margin-top: -50px;">
         
         <h1 style="font-size: 30px; margin-top: 8px;color: azure;"><b><i>{{parentProductName}}</i></b></h1>
-        <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 4px;"
+        <mat-icon style="float: right;margin-right: 270px;margin-top: -37px; transform: scale(1.5);color:rgb(247, 187, 77);">shopping_cart</mat-icon>
+        <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 60px;"
             (click)="logout()">Logout</button>
-        <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 100px;"
+        <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 160px;"
             routerLink="/dashboard">Home</button>
     </div>
     <div *ngIf="addButton">
         <button
-            style="float: right;height: 40px;width: 100px;border-radius: 7px;margin-top: 5px;background-color: cadetblue;margin-right: 10px;"
+            style="float: right;height: 40px;width: 100px;border-radius: 7px;margin-top: 5px;background-color: cadetblue;margin-right: 40px;"
             (click)="addSubProduct()">+Add New</button>
     </div>
-    <div style="display: flex;flex-wrap: wrap;padding: 30px;">
-        <div style="display: flex;justify-content: center;flex-direction: column;margin-top: 30px;align-items: center;margin: 50px;"
+    <div style="display: flex;flex-wrap: wrap;padding: 4%;width: 100%;">
+        <div style="display: flex;justify-content: center;flex-direction: column;margin-top: 40px;align-items: center;margin: 50px;"
             *ngFor="let item of subProductList" (click)="getProducts(item.id)">
             <img src={{item.imageUrl}} style="height: 200px; width: 200px;border-radius: 50%;">
             <h1 style="font-size: 20px;color: steelblue;"><b>{{item.subProductName}}</b></h1>
