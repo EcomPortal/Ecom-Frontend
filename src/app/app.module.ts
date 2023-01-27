@@ -24,6 +24,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { CartComponentComponent } from './cart-component/cart-component.component';
 
 
 
@@ -42,7 +43,8 @@ import { ProductPageComponent } from './product-page/product-page.component';
     AddProductComponent,
     HeaderComponent,
     FooterComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CartComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { Cart } from '../product-page/product-page.component';
 
 export class UserLogin{
   username:string=''
@@ -57,6 +58,7 @@ export class LoginServiceService {
   parentProduct:ParentProduct=new ParentProduct
   subProduct:SubProduct=new SubProduct
   product:Product=new Product
+  cart:Cart=new Cart
   constructor(private http:HttpClient) { }
    baseUrl:string='http://192.168.12.51:9090/'
   login(user:any){
@@ -151,5 +153,24 @@ export class LoginServiceService {
   generateOtp(email:string){
     
     return this.http.post(this.baseUrl+'user/v1/generateOtp',email)
+  }
+
+  addToCart(cart:any){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.post(this.baseUrl+'add/cart',cart,{headers:header})
+  }
+  getCartItem(userId:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getByUserId/cart/'+userId,{headers:header})
+  }
+  removeFromCart(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.delete(this.baseUrl+'delete/cart/'+id,{headers:header})
   }
 }

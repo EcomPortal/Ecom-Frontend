@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
+import { CartComponentComponent } from './cart-component/cart-component.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { LoginComponentComponent } from './login/login-component/login-component.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path:'productPage/:id',
     component:ProductPageComponent
+  },
+  {
+    path:'cart',
+    component:CartComponentComponent
   }
 ];
 

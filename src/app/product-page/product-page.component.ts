@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from '../service/login-service.service';
 
+export class Cart{
+  productId:number=0
+  userId:any
+  totalQuantity:number=0
+  productPrice:number=0
+}
 
 @Component({
   selector: 'app-product-page',
@@ -11,17 +17,20 @@ import { LoginServiceService } from '../service/login-service.service';
 export class ProductPageComponent implements OnInit {
 imageData:any
 productName:any
-price:any
+price:number=0
+productId:any
+cart:Cart=new Cart
   constructor( private router:Router,private activateRoute:ActivatedRoute,
     private loginService:LoginServiceService){}
 
   ngOnInit() {
     this.loginService.getProductDetailsById(this.activateRoute.snapshot.params['id']).subscribe(
       data=>{
-        // console.log(data)
+        console.log(data)
         this.imageData=data
         this.productName=this.imageData.product.productName+" "+this.imageData.product.modelName
         this.price=this.imageData.product.price
+        this.productId=this.imageData.productId
         if(this.imageData.imageUrlList!=null){
           this.imageList=this.imageData.imageUrlList
           this.imageName = this.imageList[this.i]
@@ -93,4 +102,28 @@ price:any
     this.router.navigate(['productDetails',this.imageData.product.subProductId])
     // console.log(this.imageData.product.subProductId)
   }
+  logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("userType")
+    localStorage.removeItem('userId')
+    this.router.navigate(['/'])
+  }
+
+  addToCart(){
+    this.cart.productId=this.productId
+    this.cart.userId=localStorage.getItem("userId")
+    this.cart.productPrice=this.price
+    this.cart.totalQuantity=1
+    this.loginService.addToCart(this.cart).subscribe(
+      data=>{
+        window.alert("Product Added To Cart...")
+        this.router.navigate(['cart'])
+      },
+      error=>{
+         window.alert('Item is out of available stock..')
+      }
+      
+    );
+  }
+ 
 }
