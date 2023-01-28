@@ -1,26 +1,24 @@
-<div style="height: 100vh; width: 100vw; background-color: bisque;overflow-x: hidden;">
-    <div style="width: 10%;margin-left: 20px;margin-top: 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" style="width: 40px; height: 40px;" routerLink="/dashboard">
+<div class="main_div">
+    <div class="back_button_div">
+        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" routerLink="/dashboard"
+            class="back_button_image">
     </div>
-    <div style="width: 100vw; height: 6.5%;background-color: rgb(99, 99, 168);text-align: center;overflow-y: hidden;margin-top: -50px;">
-        
-        <h1 style="font-size: 30px; margin-top: 8px;color: azure;"><b><i>{{parentProductName}}</i></b></h1>
-        <mat-icon style="float: right;margin-right: 270px;margin-top: -37px; transform: scale(1.5);color:rgb(247, 187, 77);" routerLink="/cart">shopping_cart</mat-icon>
+    <div class="name_cart_logout_div">
+
+        <h1 class="product_heading"><b><i>{{parentProductName}}</i></b></h1>
+        <mat-icon class="maticon_cart" routerLink="/cart">shopping_cart</mat-icon>
         <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 60px;"
             (click)="logout()">Logout</button>
         <button type="button" class="btn btn-warning" style="float: right;margin-top: -45px;margin-right: 160px;"
             routerLink="/dashboard">Home</button>
     </div>
     <div *ngIf="addButton">
-        <button
-            style="float: right;height: 40px;width: 100px;border-radius: 7px;margin-top: 5px;background-color: cadetblue;margin-right: 40px;"
-            (click)="addSubProduct()">+Add New</button>
+        <button class="add_new_button" (click)="addSubProduct()">+Add New</button>
     </div>
-    <div style="display: flex;flex-wrap: wrap;padding: 4%;width: 100%;">
-        <div style="display: flex;justify-content: center;flex-direction: column;margin-top: 40px;align-items: center;margin: 50px;"
-            *ngFor="let item of subProductList" (click)="getProducts(item.id)">
-            <img src={{item.imageUrl}} style="height: 200px; width: 200px;border-radius: 50%;">
-            <h1 style="font-size: 20px;color: steelblue;"><b>{{item.subProductName}}</b></h1>
+    <div class="item_upper_div">
+        <div class="item_main_div" *ngFor="let item of subProductList" (click)="getProducts(item.id)">
+            <img src={{item.imageUrl}}  class="item_image">
+            <h1 class="item_name"><b>{{item.subProductName}}</b></h1>
         </div>
     </div>
 </div>

@@ -1,40 +1,38 @@
-<div style="background-color: bisque;height: 100vh;width: 100vw;overflow-x: hidden;">
-    <div style="height:  6%;background-color: blue;overflow-y: hidden; ">
+<div class="main_div">
+    <div class="heading_div">
         <div>
-            <h1 style="color: whitesmoke;text-align: center;font-size: 30px;margin-top: 6px;"><b><i>Cart Details</i></b>
+            <h1 class="cart_heading_name"><b><i>Cart Details</i></b>
             </h1>
         </div>
-        <div style="margin-top: -47px;margin-left: 71%;display: flex;flex-direction: row;justify-content: center;">
-            <button class="btn btn-warning" style="height: 40px;border-radius: 8px;font-size: 18px;"
-                routerLink="/dashboard"><b>Dashboard</b></button>
-            <button class="btn btn-warning"
-                style="height: 40px;border-radius: 8px;font-size: 18px;margin-left: 10px;" (click)="logout()"><b>Logout</b></button>
+        <div class="dashboard_logout_button">
+            <button class="dashboard_button" routerLink="/dashboard"><b>Dashboard</b></button>
+            <button class="logout_button" (click)="logout()"><b>Logout</b></button>
         </div>
 
 
     </div>
 
-    <div style="display: flex;flex-direction: row;margin-top: 20px;margin-left: 10px;justify-content: center;"
-        *ngFor="let item of cartData">
-        <div style="min-width: 150px;display: flex;margin-top: 31px;min-height: 300px;flex-direction: column;">
-            <img src={{item.productImage}} style="height: 80px">
-            <div style="margin-top: 9px;">
-                <div style="display: flex;justify-content: center;">
-                    <button style="width: 80px;height: 30px;border-radius: 16px;background-color: aquamarine;">Buy Now</button>
+    <div class="cart_data_outer_div" *ngFor="let item of cartData">
+        <div class="cart_data_inner_div">
+            <img src={{item.productImage}} class="product_image">
+            <div class="button_main_div">
+                <div class="buynow_button_div">
+                    <button class="buynow_button">Buy
+                        Now</button>
 
                 </div>
-                <div style="display: flex;justify-content: center;margin-top: 10px;">
-                    <button style="width: 140px;height: 30px;border-radius: 16px;background-color: rgb(223, 166, 61)" (click)="removeFromCart(item.id)">Remove From Cart</button>
+                <div class="remove_cart_button_div">
+                    <button class="remove_cart_button" (click)="removeFromCart(item.id)">Remove From Cart</button>
                 </div>
             </div>
 
         </div>
-        <div style="display: flex;flex-direction: column;margin-left: 38px;margin-top: 20px;">
-            <h2>{{item.productName}} {{item.productModel}}</h2>
+        <div class="product_details_div">
+            <h2 class="product_name">{{item.productName}} {{item.productModel}}</h2>
             <h2>Quantity: {{item.totalQuantity}}</h2>
             <h2>Total Price: ₹{{item.totalPrice}}</h2>
             <h2>Available in stock: {{item.productAvailableStock}}</h2>
-            
+
         </div>
     </div>
 

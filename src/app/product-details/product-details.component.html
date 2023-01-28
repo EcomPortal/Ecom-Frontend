@@ -1,30 +1,26 @@
-<div style="height: 100vh; width: 100vw; background-color: bisque;overflow-x: hidden;">
-    <div style="width: 10%;margin-left: 20px;margin-top: 10px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" style="width: 40px; height: 40px;"
+<div class="main_div">
+    <div class="back_button_image_div">
+        <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" class="back_button_image"
             (click)="backToSubproducts()">
     </div>
-    <div style="height: 6.5%; width: 100%;background-color: rgb(99, 99, 168);margin-top: -55px;text-align: center;">
+    <div class="heading_cart_logout_button_div">
 
-        <h1 style="color: white;font-size: 30px;padding: 10px;margin-left: 60px;margin-top: 5px;">
-            <b><i>{{subproductName}}</i></b></h1>
-        <mat-icon
-            style="float: right;margin-right: 200px;margin-top: -47px; transform: scale(1.5);color:rgb(247, 187, 77);" routerLink="/cart">shopping_cart</mat-icon>
-        <button type="button" class="btn btn-warning" style="float: right;margin-top: -53px;margin-right: 60px;"
-            (click)="logout()">Logout</button>
+        <h1 class="sub_product_name">
+            <b><i>{{subproductName}}</i></b>
+        </h1>
+        <mat-icon class="cart_icon" routerLink="/cart">shopping_cart</mat-icon>
+        <button type="button" class="logout_button" (click)="logout()">Logout</button>
     </div>
-    <div style="padding: 10px;" *ngIf="addButton">
-        <button
-            style="float: right;margin-top: 4px;height: 40px;margin-right: 40px;border-radius:10px;background-color: blue;color: aqua;font-size: 17px;"
-            (click)="addProduct()">+Add
+    <div *ngIf="addButton" class="add_button_div">
+        <button class="add_button" (click)="addProduct()">+Add
             New</button>
     </div>
 
-    <div style="display: flex;flex-wrap: wrap;padding: 2%;margin-left: 4%;">
-        <div style="display: flex;justify-content: center;flex-direction: column;margin-top: 20px;align-items: center;margin: 30px;"
-            *ngFor="let item of productList" >
-            <div style="margin-left: 90%" *ngIf="addButton">
+    <div class="product_outer_div">
+        <div class="product_inner_div" *ngFor="let item of productList">
+            <div *ngIf="addButton" class="three_dot_button_div">
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-                    style="margin-left: 5px;margin-top: 10px;">
+                    class="menu_button_position">
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -37,10 +33,13 @@
                 </mat-menu>
             </div>
             <div (click)="redirectProductPage(item.id)">
-                <img src={{item.productImage}} style="height: 200px; width: 200px;border-radius: 10px;;">
-                <h1 style="font-size: 20px;color: steelblue;">{{item.productName}} {{item.modelName}}</h1>
-                <p style="font-size: 20px;margin-top: -7px;">Price: ₹{{item.price}}</p>
-                <p style="margin-top: -6px;">Available Quantity: {{item.availableStock}}</p>
+                <img src={{item.productImage}} class="product_image">
+
+                <h1 class="product_name">{{item.productName}} {{item.modelName}}
+                </h1>
+                <p class="product_price">Price: ₹{{item.price}}</p>
+                <p class="product_available_quantity">Available Quantity: {{item.availableStock}}</p>
+
                 <!-- <button style="height: 40px; border-radius: 15px;background-color: blue;color: aqua;">Add To Cart</button> -->
             </div>
         </div>

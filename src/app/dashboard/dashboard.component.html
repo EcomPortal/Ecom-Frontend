@@ -1,7 +1,6 @@
-<div style="height: 100vh; width: 100vw;overflow-x: hidden;background-color: bisque;">
+<div class="main">
 
-    <div
-        style="background-color:rgb(99, 99, 168); width: 100%; height: 50px; overflow-x: hidden;overflow-y: hidden;">
+    <div class="inside1">
         <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
             style="border: none; background-color: blue; height: 70px; margin-left: 10px; margin-top: -9px;">
             <mat-icon style="color: black; ">menu</mat-icon>
@@ -15,26 +14,23 @@
                 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="message"></mat-icon>
             </button>
         </mat-menu> -->
-        <h1 style="margin-left: 50px;  color: white; margin-top: 7px; font-size: 30px;"><b><i>Ecom-Dashboard</i></b>
+        <h1 class="dashboard_heading"><b><i>Ecom-Dashboard</i></b>
         </h1>
         <!-- <div style="background-color: aqua;float: right;margin-top: -4%;"> -->
-            <mat-icon style="float: right;margin-right: 170px;margin-top: -43px; transform: scale(1.5);color:rgb(247, 187, 77);" routerLink="/cart">shopping_cart</mat-icon>
-            <button type="button" class="btn btn-warning" style="margin-top: -50px;float: right;margin-right: 54px;"
-                (click)="logout()">Logout</button>
+        <mat-icon class="maticon_add_to_cart" routerLink="/cart">shopping_cart</mat-icon>
+        <button type="button" class="btn btn-warning" style="margin-top: -50px;float: right;margin-right: 54px;"
+            (click)="logout()">Logout</button>
         <!-- </div> -->
     </div>
 
-    <div style=" overflow-y: hidden;overflow-x: hidden;background-color: bisque;" *ngIf="addButton">
-        <button
-            style="float: right; background-color: rgb(68, 68, 230);height: 40px;margin-top: 30px;margin-right: 50px; font-size: 18px; color: aqua; "
-            routerLink="/parentProduct">+Add
+    <div class="add_button_div" *ngIf="addButton">
+        <button class="add_new_button" routerLink="/parentProduct">+Add
             New</button>
     </div>
-    <div style="display: flex;flex-wrap: wrap;padding: 30px;">
-        <div style="display: flex;justify-content: center;flex-direction: column;margin-top: 30px;align-items: center;margin: 50px;"
-            *ngFor="let item of parentDataArray" (click)="getSubProduct(item.id)">
-            <img src={{item.imageUrl}} style="height: 200px; width: 200px;border-radius: 50%;">
-            <h1 style="font-size: 20px;color: steelblue;">{{item.productName}}</h1>
+    <div class="item_data_upper_div_main">
+        <div class="item_data_div_main" *ngFor="let item of parentDataArray" (click)="getSubProduct(item.id)">
+            <img src={{item.imageUrl}} class="item_image">
+            <h1 class="item_product_name">{{item.productName}}</h1>
         </div>
         <!-- <div>
             <img src="../../assets/userlogo.png" style="height: 250px;margin-left: 20px;">
