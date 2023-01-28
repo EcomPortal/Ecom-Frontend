@@ -12,20 +12,14 @@
         <button type="button" class="btn btn-warning" style="float: right;margin-top: -27px;margin-right: 60px;"
             (click)="logout()">Logout</button>
     </div>
-    <div style="width: 40%;max-height: 40%;margin-left: 30%;">
+    <div style="width: 40%;max-height: 40%;margin-left: 30%;display: flex;justify-content: center;">
         <div (mouseover)="showArrow()" (mouseleave)="hiddenarrow()">
-            <img src={{imageName}} style="max-width: 350px;margin-left: 20%;margin-top: 10px;">
+            <img src={{imageName}} style="max-width: 300px;margin-top: 10px;">
             <mat-icon style="transform: scale(4.6);color: orange;margin-left: -29px;" *ngIf="arrowShow"
                 (click)="getNextImage()">keyboard_arrow_right</mat-icon>
             <mat-icon style="transform: scale(4.6);color: orange;margin-left: -50.4%;margin-top: 10px;"
                 *ngIf="arrowShow" (click)="getPreviousImage()">keyboard_arrow_left</mat-icon>
-            <div style="display: flex; justify-content: center;margin-top: 10px;">
-                <h3 style="font-size: 30px;">{{productName}}</h3>
 
-            </div>
-            <div style="display: flex; justify-content: center;">
-                <h2>Price: ₹{{price}}</h2>
-            </div>
         </div>
         <!-- <div style="margin-top: -62%;margin-left: 75%;">
             <mat-icon style="transform: scale(1.6);color: red;">favorite</mat-icon>
@@ -34,18 +28,25 @@
             <mat-icon style="transform: scale(2.9);color: orange;">keyboard_arrow_right</mat-icon>
         </div> -->
 
-        <div style="display: flex; flex-direction: row;justify-content: center;margin-top: 10px;">
-            <button style="height: 45px;font-size: 20px;background-color: salmon;border-radius: 10px;width: 250px;"
-                (click)="addToCart()">
-                <mat-icon>add_shopping_cart</mat-icon>Add To Cart</button>
 
-        </div>
-        <div style="display: flex;margin-top: 10px;justify-content: center;">
-            <button
-                style="height: 45px;font-size: 20px;background-color: salmon;border-radius: 10px;width: 150px;">
-                <mat-icon> monetization_on</mat-icon>Buy Now</button>
-        </div>
 
+    </div>
+    <div style="display: flex; justify-content: center;margin-top: 10px;">
+        <h3 style="font-size: 30px;">{{productName}}</h3>
+
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <h2>Price: ₹{{price}}</h2>
+    </div>
+    <div style="display: flex; flex-direction: row;justify-content: center;margin-top: 10px;">
+        <button style="height: 45px;font-size: 20px;background-color: salmon;border-radius: 10px;width: 250px;"
+            (click)="addToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>Add To Cart</button>
+
+    </div>
+    <div style="display: flex;margin-top: 10px;justify-content: center;">
+        <button style="height: 45px;font-size: 20px;background-color: salmon;border-radius: 10px;width: 150px;">
+            <mat-icon> monetization_on</mat-icon>Buy Now</button>
     </div>
 
 

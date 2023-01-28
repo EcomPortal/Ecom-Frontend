@@ -17,9 +17,6 @@
             <input type="text"
                 style="width: 300px; background-color: transparent; height: 40px; color: black;font-size: 15px; outline: none; border-bottom: 2px solid #1a1a1d; margin-top: 10px; border-radius: 10px;"
                 placeholder="Username" #userName="ngModel" [(ngModel)]="user.userName" name="userName">
-            <input type="password"
-                style="width: 300px; background-color: transparent; height: 40px; color: black;font-size: 15px; outline: none; border-bottom: 2px solid #1a1a1d; margin-top: 10px;border-radius: 10px;"
-                placeholder="Password" #password="ngModel" [(ngModel)]="user.password" name="password">
         </div>
         <div style="display: flex; justify-content: center; padding: 10px;">
             <button style="height: 30px; width: 60px;border-radius: 10px;background-color: rgb(37, 37, 168); margin-left: 170px;color: aliceblue;" (click)="register()">Submit</button>
