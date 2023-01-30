@@ -25,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
+import { AddressComponent } from './address/address.component';
 
 
 
@@ -44,7 +45,8 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
     HeaderComponent,
     FooterComponent,
     ProductPageComponent,
-    CartComponentComponent
+    CartComponentComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

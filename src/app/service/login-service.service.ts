@@ -59,8 +59,8 @@ export class LoginServiceService {
   product:Product=new Product
   cart:Cart=new Cart
   constructor(private http:HttpClient) { }
-  //  baseUrl:string='http://192.168.12.51:9090/'
-   baseUrl:string='http://192.168.29.128:9090/'
+   baseUrl:string='http://192.168.12.41:9090/'
+  //  baseUrl:string='http://192.168.29.128:9090/'
   login(user:any){
     this.isLoggedIn=true
     return this.http.post<UserLogin>(this.baseUrl+"user/v1/signIn",user)
