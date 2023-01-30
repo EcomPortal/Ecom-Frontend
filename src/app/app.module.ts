@@ -26,6 +26,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { AddressComponent } from './address/address.component';
+import { AddNewAddressComponent } from './add-new-address/add-new-address.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -46,7 +48,8 @@ import { AddressComponent } from './address/address.component';
     FooterComponent,
     ProductPageComponent,
     CartComponentComponent,
-    AddressComponent
+    AddressComponent,
+    AddNewAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import { AddressComponent } from './address/address.component';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
     
   ],
   providers: [],

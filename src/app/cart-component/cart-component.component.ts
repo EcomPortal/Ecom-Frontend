@@ -18,7 +18,7 @@ export class CartComponentComponent implements OnInit{
       data=>{
         // console.log(data)
         this.cartData=data
-        console.log(this.cartData)
+        // console.log(this.cartData)
       },
       error=>{
          console.log(error)
@@ -58,6 +58,11 @@ export class CartComponentComponent implements OnInit{
     localStorage.removeItem("userType")
     localStorage.removeItem('userId')
     this.router.navigate(['/'])
+  }
+
+  buyNow(item:any){
+    // console.log(item.productId)
+    this.router.navigate(['address'],{state:{id:item.productId}})
   }
 
 }

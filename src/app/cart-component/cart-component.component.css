@@ -45,20 +45,24 @@
     display: flex;
     flex-direction: row;
     margin-top: 20px;
-    margin-left: 20px;
-    justify-content: center;
+    margin-left: 280px;
+   
+   
 }
 
 .cart_data_inner_div {
     max-width: 140px;
     display: flex;
-    margin-top: 31px;
+    margin-top: 19px;
     min-height: 300px;
     flex-direction: column;
+   
+   
 }
 
 .product_image {
-    max-height: 130px
+    max-height: 130px;
+    margin-top: 20px;
 }
 
 .button_main_div {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Cart } from '../product-page/product-page.component';
+import { AddressAdd } from '../add-new-address/add-new-address.component';
 
 export class UserLogin{
   username:string=''
@@ -58,8 +59,9 @@ export class LoginServiceService {
   subProduct:SubProduct=new SubProduct
   product:Product=new Product
   cart:Cart=new Cart
+  address:AddressAdd=new AddressAdd
   constructor(private http:HttpClient) { }
-   baseUrl:string='http://192.168.12.41:9090/'
+   baseUrl:string='http://192.168.12.51:9090/'
   //  baseUrl:string='http://192.168.29.128:9090/'
   login(user:any){
     this.isLoggedIn=true
@@ -172,5 +174,32 @@ export class LoginServiceService {
       "Authorization","Bearer "+localStorage.getItem("token") || '{}'
     );
     return this.http.delete(this.baseUrl+'delete/cart/'+id,{headers:header})
+  }
+
+  getAllState(){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getAll/state',{headers:header})
+  }
+
+  getAllCity(id:number){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'getAll/city/'+id,{headers:header})
+  }
+
+  saveAddress(address:any){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.post(this.baseUrl+'save/address',address,{headers:header})
+  }
+  getAddressList(id:any){
+    let header = new HttpHeaders().set(
+      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
+    );
+    return this.http.get(this.baseUrl+'get/address/'+id,{headers:header})
   }
 }
