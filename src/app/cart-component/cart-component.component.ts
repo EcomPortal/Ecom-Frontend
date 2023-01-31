@@ -14,6 +14,7 @@ export class CartComponentComponent implements OnInit{
   constructor(private loginService:LoginServiceService,private router:Router){}
   ngOnInit(){
     this.userId=localStorage.getItem("userId")
+    localStorage.removeItem("productId")
     this.loginService.getCartItem(this.userId).subscribe(
       data=>{
         // console.log(data)
@@ -62,7 +63,8 @@ export class CartComponentComponent implements OnInit{
 
   buyNow(item:any){
     // console.log(item.productId)
-    this.router.navigate(['address'],{state:{id:item.productId}})
+    localStorage.setItem("productId",item.productId)
+    this.router.navigate(['address'])
   }
 
 }

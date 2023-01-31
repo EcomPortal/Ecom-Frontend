@@ -146,7 +146,7 @@ export class LoginServiceService {
     return this.http.delete(this.baseUrl+'delete/product/'+id,{headers:header})
   }
 
-  getProductDetailsById(id:number){
+  getProductDetailsById(id:any){
     let header = new HttpHeaders().set(
       "Authorization","Bearer "+localStorage.getItem("token") || '{}'
     );

@@ -25,7 +25,7 @@ export class AddressComponent implements OnInit{
     }
    );
   //  console.log(history.state.id)
-   this.loginService.getProductDetailsById(history.state.id).subscribe(
+   this.loginService.getProductDetailsById(localStorage.getItem("productId")).subscribe(
     data=>{
       this.productData=data
       console.log(this.productData)
