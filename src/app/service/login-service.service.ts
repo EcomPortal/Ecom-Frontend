@@ -1,49 +1,51 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Cart } from '../product-page/product-page.component';
 import { AddressAdd } from '../add-new-address/add-new-address.component';
 
-export class UserLogin{
-  username:string=''
-  password:string=''
-  token:string=''
-  userName:string=''
-  userType: string=''
+export class UserLogin {
+  username: string = ''
+  password: string = ''
+  token: string = ''
+  userName: string = ''
+  userType: string = ''
 }
 
-export class UserRegister{
-  email:string=''
-  userName:string=''
-  phoneNo:string=''
+export class UserRegister {
+  email: string = ''
+  userName: string = ''
+  phoneNo: string = ''
 }
 
-export class ParentProduct{
-  productName:string=''
-  imageUrl:string=''
+export class ParentProduct {
+  productName: string = ''
+  imageUrl: string = ''
 }
 
-export class ForgetPassword{
-  email:string=''
-  password:string=''
-  retypePassword:string=''
-  otp:string=''
+export class ForgetPassword {
+  email: string = ''
+  password: string = ''
+  retypePassword: string = ''
+  otp: string = ''
 }
-export class SubProduct{
-subProductName:string=''
-imageUrl:string=''
-parentProductId:string=''
+export class SubProduct {
+  subProductName: string = ''
+  imageUrl: string = ''
+  parentProductId: string = ''
 }
-export class Product{
-    id:number=0
-    availableStock: number=0
-    modelName: string=''
-    price:number=0
-    productImage: string=''
-    productName: string=''
-    subProductId:number =0
-  
-}
+export class Product {
+  id: number = 0
+  availableStock: number = 0
+  modelName: string = ''
+  price: number = 0
+  productImage: string = ''
+  productName: string = ''
+  subProductId: number = 0
 
+}
+const header = new HttpHeaders().set(
+  "Authorization", "Bearer " + localStorage.getItem("token") || '{}'
+);
 @Injectable({
   providedIn: 'root'
 })
@@ -51,155 +53,122 @@ export class Product{
 
 
 export class LoginServiceService {
-  user:UserLogin=new UserLogin
-  userRegister:UserRegister=new UserRegister
-  forget:ForgetPassword=new ForgetPassword
-  isLoggedIn:boolean=false
-  parentProduct:ParentProduct=new ParentProduct
-  subProduct:SubProduct=new SubProduct
-  product:Product=new Product
-  cart:Cart=new Cart
-  address:AddressAdd=new AddressAdd
-  constructor(private http:HttpClient) { }
-   baseUrl:string='http://192.168.12.51:9090/'
+  user: UserLogin = new UserLogin
+  userRegister: UserRegister = new UserRegister
+  forget: ForgetPassword = new ForgetPassword
+  isLoggedIn: boolean = false
+  parentProduct: ParentProduct = new ParentProduct
+  subProduct: SubProduct = new SubProduct
+  product: Product = new Product
+  cart: Cart = new Cart
+  address: AddressAdd = new AddressAdd
+  constructor(private http: HttpClient) { }
+  baseUrl: string = 'http://192.168.12.51:9090/'
   //  baseUrl:string='http://192.168.29.128:9090/'
-  login(user:any){
-    this.isLoggedIn=true
-    return this.http.post<UserLogin>(this.baseUrl+"user/v1/signIn",user)
+
+  login(user: any) {
+    this.isLoggedIn = true
+    return this.http.post<UserLogin>(this.baseUrl + "user/v1/signIn", user)
   }
 
-  register(userRegister:any){
-    return this.http.post<UserRegister>(this.baseUrl+"user/v1/signUp",userRegister);
+  register(userRegister: any) {
+    return this.http.post<UserRegister>(this.baseUrl + "user/v1/signUp", userRegister);
   }
 
-  forgetPassword(forget:any){
-    return this.http.post<ForgetPassword>(this.baseUrl+"user/v1/forgetPassword",forget);
+  forgetPassword(forget: any) {
+    return this.http.post<ForgetPassword>(this.baseUrl + "user/v1/forgetPassword", forget);
   }
-  isUserLoggedIn(){
-    let user=localStorage.getItem('token')
-    return !(user===null);
+  isUserLoggedIn() {
+    let user = localStorage.getItem('token')
+    return !(user === null);
   }
-  logout(){
-    this.isLoggedIn=false
+  logout() {
+    this.isLoggedIn = false
     localStorage.removeItem('token')
   }
-  getParentProductData(){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get<ParentProduct>(this.baseUrl+'getAll/parent/product',{headers:header})
+  getParentProductData() {
+
+    return this.http.get<ParentProduct>(this.baseUrl + 'getAll/parent/product', { headers: header })
   }
-  addNewParentProduct(parentProduct:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
+  addNewParentProduct(parentProduct: any) {
+
     console.log(parentProduct)
-    return this.http.post<ParentProduct>(this.baseUrl+'add/parent/product',parentProduct,{headers:header});
+    return this.http.post<ParentProduct>(this.baseUrl + 'add/parent/product', parentProduct, { headers: header });
   }
 
-  saveSubProduct(subProduct:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    console.log(this.baseUrl+"add/subProduct")
-    return this.http.post<SubProduct>(this.baseUrl+"add/subProduct",subProduct,{headers:header})
+  saveSubProduct(subProduct: any) {
+
+    console.log(this.baseUrl + "add/subProduct")
+    return this.http.post<SubProduct>(this.baseUrl + "add/subProduct", subProduct, { headers: header })
   }
 
-  getSubProduct(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getAll/subProduct/'+id,{headers:header})
+  getSubProduct(id: number) {
+
+    return this.http.get(this.baseUrl + 'getAll/subProduct/' + id, { headers: header })
   }
 
-  saveProduct(product:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.post<Product>(this.baseUrl+'add/product',product,{headers:header})
+  saveProduct(product: any) {
+
+    return this.http.post<Product>(this.baseUrl + 'add/product', product, { headers: header })
   }
 
-  getAllProduct(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getAll/product/'+id,{headers:header})
+  getAllProduct(id: number) {
+
+    return this.http.get(this.baseUrl + 'getAll/product/' + id, { headers: header })
   }
 
-  getProductById(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getById/product/'+id,{headers:header})
+  getProductById(id: number) {
+
+    return this.http.get(this.baseUrl + 'getById/product/' + id, { headers: header })
   }
 
-  updateProduct(product:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.post<Product>(this.baseUrl+'update/product',product,{headers:header})
+  updateProduct(product: any) {
+
+    return this.http.post<Product>(this.baseUrl + 'update/product', product, { headers: header })
   }
-  deleteProduct(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.delete(this.baseUrl+'delete/product/'+id,{headers:header})
+  deleteProduct(id: number) {
+
+    return this.http.delete(this.baseUrl + 'delete/product/' + id, { headers: header })
   }
 
-  getProductDetailsById(id:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getByUserId/productDescription/'+id,{headers:header})
+  getProductDetailsById(id: any) {
+
+    return this.http.get(this.baseUrl + 'getByUserId/productDescription/' + id, { headers: header })
   }
-  generateOtp(email:string){
-    
-    return this.http.post(this.baseUrl+'user/v1/generateOtp',email)
+  generateOtp(email: string) {
+
+    return this.http.post(this.baseUrl + 'user/v1/generateOtp', email)
   }
 
-  addToCart(cart:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.post(this.baseUrl+'add/cart',cart,{headers:header})
+  addToCart(cart: any) {
+
+    return this.http.post(this.baseUrl + 'add/cart', cart, { headers: header })
   }
-  getCartItem(userId:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getByUserId/cart/'+userId,{headers:header})
+  getCartItem(userId: number) {
+
+    return this.http.get(this.baseUrl + 'getByUserId/cart/' + userId, { headers: header })
   }
-  removeFromCart(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.delete(this.baseUrl+'delete/cart/'+id,{headers:header})
+  removeFromCart(id: number) {
+
+    return this.http.delete(this.baseUrl + 'delete/cart/' + id, { headers: header })
   }
 
-  getAllState(){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getAll/state',{headers:header})
+  getAllState() {
+
+    return this.http.get(this.baseUrl + 'getAll/state', { headers: header })
   }
 
-  getAllCity(id:number){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'getAll/city/'+id,{headers:header})
+  getAllCity(id: number) {
+
+    return this.http.get(this.baseUrl + 'getAll/city/' + id, { headers: header })
   }
 
-  saveAddress(address:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.post(this.baseUrl+'save/address',address,{headers:header})
+  saveAddress(address: any) {
+
+    return this.http.post(this.baseUrl + 'save/address', address, { headers: header })
   }
-  getAddressList(id:any){
-    let header = new HttpHeaders().set(
-      "Authorization","Bearer "+localStorage.getItem("token") || '{}'
-    );
-    return this.http.get(this.baseUrl+'get/address/'+id,{headers:header})
+  getAddressList(id: any) {
+
+    return this.http.get(this.baseUrl + 'get/address/' + id, { headers: header })
   }
 }

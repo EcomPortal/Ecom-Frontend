@@ -61,7 +61,8 @@
     margin-top: 20px;
     margin-left: 20px;
     
-    height: 50px;
+    
+    height: 40%;
 }
 
 .add_address_link{
@@ -92,12 +93,12 @@
 }
 
 .add_new_address_div{
-    margin-top: 14px;
+    margin-top: 4%;
     margin-left: 17px;
 }
 
 .product_details_div{
-    margin-top: 90px;
+    margin-top: 3%;
     display: flex;
     flex-direction: row;
     margin-left: 60px;

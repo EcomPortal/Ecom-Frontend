@@ -9,6 +9,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { LoginComponentComponent } from './login/login-component/login-component.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ParentProductComponent } from './parent-product/parent-product.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { RouterGuardServiceService } from './router-guard-service.service';
@@ -79,6 +80,10 @@ const routes: Routes = [
   {
     path:'addNewAddress',
     component:AddNewAddressComponent
+  },
+  {
+    path:'paymentPage',
+    component:PaymentPageComponent
   }
 ];
 

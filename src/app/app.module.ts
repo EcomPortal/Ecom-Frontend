@@ -28,6 +28,7 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
 import { AddressComponent } from './address/address.component';
 import { AddNewAddressComponent } from './add-new-address/add-new-address.component';
 import {MatSelectModule} from '@angular/material/select';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
 
@@ -49,7 +50,8 @@ import {MatSelectModule} from '@angular/material/select';
     ProductPageComponent,
     CartComponentComponent,
     AddressComponent,
-    AddNewAddressComponent
+    AddNewAddressComponent,
+    PaymentPageComponent
   ],
   imports: [
     BrowserModule,

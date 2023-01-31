@@ -11,6 +11,7 @@ import { LoginServiceService } from '../service/login-service.service';
 })
 export class AddressComponent implements OnInit{
   productData:any
+  addressId:any
   constructor(private router:Router,private loginService:LoginServiceService){}
   ngOnInit() {
     // this.address="ndsjcbsdncsduhvjsdnvjsdjvmsdmkvjskvosjvos,sbsdjbvjwjvkjwdv,whviwjvkjwdv"
@@ -43,6 +44,16 @@ export class AddressComponent implements OnInit{
   }
 
   setAddress(item:any){
-    console.log(item)
+    // console.log(item)
+    this.addressId=item.id
+  }
+
+  proceedTOBuy(){
+    if(!this.addressId){
+      window.alert("Please select the address..")
+    }
+    else{
+      this.router.navigate(['paymentPage'])
+    }
   }
 }

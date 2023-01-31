@@ -17,7 +17,7 @@
 }
 
 .heading_cart_logout_button_div {
-    height: 6.5%;
+    height: 60px;
     width: 100%;
     background-color: rgb(99, 99, 168);
     margin-top: -55px;
@@ -42,7 +42,7 @@
 
 .logout_button {
     float: right;
-    margin-top: -53px;
+    margin-top: -56px;
     margin-right: 60px;
     height: 40px;
     width: 70px;
@@ -71,6 +71,8 @@
     flex-wrap: wrap;
     padding: 2%;
     margin-left: 4%;
+   
+    margin-top: 3%;
 }
 
 .product_inner_div {
@@ -112,4 +114,18 @@
 .product_available_quantity {
     margin-top: -6px;
     text-align: center;
+}
+
+.form-control{
+   float: left;
+    width: 270px;
+    margin-top: 0px;
+    height: 54px;
+    margin-left: 7%;
+}
+
+.select_option {
+    height: 75px;
+    width: 220px;
+    margin-left: 2%;
 }

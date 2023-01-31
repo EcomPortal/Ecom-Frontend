@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginServiceService } from '../service/login-service.service';
 
-export class Cart{
-  productId:number=0
-  userId:any
-  totalQuantity:number=0
-  productPrice:number=0
+export class Cart {
+  productId: number = 0
+  userId: any
+  totalQuantity: number = 0
+  productPrice: number = 0
 }
 
 @Component({
@@ -15,32 +15,36 @@ export class Cart{
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
-imageData:any
-productName:any
-price:number=0
-productId:any
-cart:Cart=new Cart
-  constructor( private router:Router,private activateRoute:ActivatedRoute,
-    private loginService:LoginServiceService){}
+  imageData: any
+  productName: any
+  price: number = 0
+  productId: any
+  cart: Cart = new Cart
+  constructor(private router: Router, private activateRoute: ActivatedRoute,
+    private loginService: LoginServiceService) { }
 
   ngOnInit() {
     this.loginService.getProductDetailsById(this.activateRoute.snapshot.params['id']).subscribe(
-      data=>{
+      data => {
         console.log(data)
-        this.imageData=data
-        this.productName=this.imageData.product.productName+" "+this.imageData.product.modelName
-        this.price=this.imageData.product.price
-        this.productId=this.imageData.productId
-        if(this.imageData.imageUrlList!=null){
-          this.imageList=this.imageData.imageUrlList
+        this.imageData = data
+        if (localStorage.getItem("productId")) {
+          localStorage.removeItem("productId")
+        }
+
+        this.productName = this.imageData.product.productName + " " + this.imageData.product.modelName
+        this.price = this.imageData.product.price
+        this.productId = this.imageData.productId
+        if (this.imageData.imageUrlList != null) {
+          this.imageList = this.imageData.imageUrlList
           this.imageName = this.imageList[this.i]
-          
+
         }
-        else{
+        else {
           this.imageName = this.imageData.product.productImage
-          this.arrowShow=false
+          this.arrowShow = false
         }
-        
+
         // console.log(this.imageList)
       }
     );
@@ -48,7 +52,7 @@ cart:Cart=new Cart
     // this.imageList.push("https://cdn1.smartprix.com/rx-iVpi6VSGr-w420-h420/dell-inspiron-3511-l.webp")
 
     // console.log(this.imageList[this.i])
-    
+
   }
   arrowShow: boolean = false
   imageList: Array<String> = []
@@ -57,14 +61,14 @@ cart:Cart=new Cart
 
   showArrow() {
     // console.log("mouse in")
-    if(this.imageList.length>0){
+    if (this.imageList.length > 0) {
       // console.log(this.imageList)
       this.arrowShow = true
     }
-    else{
-      this.arrowShow=false
+    else {
+      this.arrowShow = false
     }
-   
+
   }
   hiddenarrow() {
     // console.log("mouse out")
@@ -88,42 +92,46 @@ cart:Cart=new Cart
     }
 
   }
-  getPreviousImage(){
-    this.i=this.i-1;
-    if(this.i<0){
-      this.i=this.imageList.length-1
-      this.imageName=this.imageList[this.i]
+  getPreviousImage() {
+    this.i = this.i - 1;
+    if (this.i < 0) {
+      this.i = this.imageList.length - 1
+      this.imageName = this.imageList[this.i]
     }
-    else{
-      this.imageName=this.imageList[this.i]
+    else {
+      this.imageName = this.imageList[this.i]
     }
   }
-  backToProductPage(){
-    this.router.navigate(['productDetails',this.imageData.product.subProductId])
+  backToProductPage() {
+    this.router.navigate(['productDetails', this.imageData.product.subProductId])
     // console.log(this.imageData.product.subProductId)
   }
-  logout(){
+  logout() {
     localStorage.removeItem("token")
     localStorage.removeItem("userType")
     localStorage.removeItem('userId')
     this.router.navigate(['/'])
   }
 
-  addToCart(){
-    this.cart.productId=this.productId
-    this.cart.userId=localStorage.getItem("userId")
-    this.cart.productPrice=this.price
-    this.cart.totalQuantity=1
+  addToCart() {
+    this.cart.productId = this.productId
+    this.cart.userId = localStorage.getItem("userId")
+    this.cart.productPrice = this.price
+    this.cart.totalQuantity = 1
     this.loginService.addToCart(this.cart).subscribe(
-      data=>{
+      data => {
         window.alert("Product Added To Cart...")
         this.router.navigate(['cart'])
       },
-      error=>{
-         window.alert('Item is out of available stock..')
+      error => {
+        window.alert('Item is out of available stock..')
       }
-      
+
     );
   }
- 
+
+  buyNow(){
+    localStorage.setItem("productId",this.productId)
+    this.router.navigate(['address'])
+  }
 }
