@@ -5,8 +5,17 @@
             </h1>
         </div>
         <div class="dashboard_logout_button">
-            <button class="dashboard_button" routerLink="/dashboard"><b>Dashboard</b></button>
-            <button class="logout_button" (click)="logout()"><b>Logout</b></button>
+            <!-- <button class="dashboard_button" routerLink="/dashboard"><b>Dashboard</b></button>
+            <button class="logout_button" (click)="logout()"><b>Logout</b></button> -->
+            <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+                <button mat-menu-item routerLink="/orderPage">Orders</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
         </div>
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Cart } from '../product-page/product-page.component';
 import { AddressAdd } from '../add-new-address/add-new-address.component';
+import { ProdutBuy } from '../address/address.component';
 
 export class UserLogin {
   username: string = ''
@@ -62,6 +63,7 @@ export class LoginServiceService {
   product: Product = new Product
   cart: Cart = new Cart
   address: AddressAdd = new AddressAdd
+  productBuy:ProdutBuy=new ProdutBuy
   constructor(private http: HttpClient) { }
   baseUrl: string = 'http://192.168.12.51:9090/'
   //  baseUrl:string='http://192.168.29.128:9090/'
@@ -170,5 +172,17 @@ export class LoginServiceService {
   getAddressList(id: any) {
 
     return this.http.get(this.baseUrl + 'get/address/' + id, { headers: header })
+  }
+
+  orderProduct(productBuy:any){
+    return this.http.post(this.baseUrl+'add/order',productBuy,{headers:header})
+  }
+
+  ordersGetAll(id:any){
+    return this.http.get(this.baseUrl+'getAll/order/'+id,{headers:header})
+  }
+
+  generatePdf(id:any){
+    return this.http.get(this.baseUrl+'generateinvoce/order/'+id,{headers:header})
   }
 }

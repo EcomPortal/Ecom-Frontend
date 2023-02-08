@@ -10,7 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import{MatButtonModule} from '@angular/material/button';
 import{MatIconModule} from '@angular/material/icon';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RegistrationFormComponent } from './signup/registration-form/registration-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatMenuModule} from '@angular/material/menu';
@@ -29,6 +29,9 @@ import { AddressComponent } from './address/address.component';
 import { AddNewAddressComponent } from './add-new-address/add-new-address.component';
 import {MatSelectModule} from '@angular/material/select';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 
 
@@ -51,7 +54,9 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     CartComponentComponent,
     AddressComponent,
     AddNewAddressComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    OrderPageComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,11 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     MatSelectModule
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

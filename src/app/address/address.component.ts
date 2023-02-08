@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../service/login-service.service';
 
-
+export class ProdutBuy{
+  addressId:any
+  productId:any
+  userId:any
+}
 
 @Component({
   selector: 'app-address',
@@ -12,6 +16,8 @@ import { LoginServiceService } from '../service/login-service.service';
 export class AddressComponent implements OnInit{
   productData:any
   addressId:any
+  productBuy:ProdutBuy=new ProdutBuy
+  responseObj:any
   constructor(private router:Router,private loginService:LoginServiceService){}
   ngOnInit() {
     // this.address="ndsjcbsdncsduhvjsdnvjsdjvmsdmkvjskvosjvos,sbsdjbvjwjvkjwdv,whviwjvkjwdv"
@@ -22,14 +28,14 @@ export class AddressComponent implements OnInit{
    this.loginService.getAddressList(localStorage.getItem("userId")).subscribe(
     data=>{
       this.addressList=data
-      console.log(data)
+      // console.log(data)
     }
    );
   //  console.log(history.state.id)
    this.loginService.getProductDetailsById(localStorage.getItem("productId")).subscribe(
     data=>{
       this.productData=data
-      console.log(this.productData)
+      // console.log(this.productData)
     }
    );
 
@@ -46,6 +52,7 @@ export class AddressComponent implements OnInit{
   setAddress(item:any){
     // console.log(item)
     this.addressId=item.id
+    this.productBuy.addressId=item.id
   }
 
   proceedTOBuy(){
@@ -53,7 +60,30 @@ export class AddressComponent implements OnInit{
       window.alert("Please select the address..")
     }
     else{
-      this.router.navigate(['paymentPage'])
+      this.productBuy.productId=this.productData.product.id
+      this.productBuy.userId=localStorage.getItem("userId")
+      this.loginService.orderProduct(this.productBuy).subscribe(
+        data=>{
+          // window.alert("Order Placed..")
+          console.log(data)
+          this.responseObj=data
+          this.loginService.generatePdf(this.responseObj.id).subscribe(
+            data=>{
+              console.log(data)
+            },
+            error=>{
+              console.log(error)
+            }
+          );
+          window.alert("Order Placed...")
+          this.router.navigate(['orderPage'])
+        },
+        error=>{
+          window.alert("Something went Wrong..")
+        }
+      );
+      // console.log(this.productBuy)
+      // this.router.navigate(['orderPage'])
     }
   }
 }

@@ -44,7 +44,7 @@ export class ProductDetailsComponent implements OnInit{
         this.productList=this.productObj.productList
         this.subProductId=this.productObj.parentId
         this.filteredList=this.productList
-        console.log(this.productList)
+        // console.log(this.productList)
       },
       error=>{
         console.log(error)

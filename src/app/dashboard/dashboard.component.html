@@ -17,10 +17,20 @@
         <h1 class="dashboard_heading"><b><i>Ecom-Dashboard</i></b>
         </h1>
         <!-- <div style="background-color: aqua;float: right;margin-top: -4%;"> -->
-        <mat-icon class="maticon_add_to_cart" routerLink="/cart">shopping_cart</mat-icon>
+        <!-- <mat-icon class="maticon_add_to_cart" routerLink="/cart">shopping_cart</mat-icon>
         <button type="button" class="btn btn-warning" style="margin-top: -50px;float: right;margin-right: 54px;"
-            (click)="logout()">Logout</button>
-        <!-- </div> -->
+            (click)="logout()">Logout</button> -->
+        <div class="menu_button">
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+                [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/orderPage">Orders</button>
+                <button mat-menu-item routerLink="/cart">Cart</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+        </div>
     </div>
 
     <div class="add_button_div" *ngIf="addButton">

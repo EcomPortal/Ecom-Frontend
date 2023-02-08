@@ -26,7 +26,7 @@ export class ProductPageComponent implements OnInit {
   ngOnInit() {
     this.loginService.getProductDetailsById(this.activateRoute.snapshot.params['id']).subscribe(
       data => {
-        console.log(data)
+        // console.log(data)
         this.imageData = data
         if (localStorage.getItem("productId")) {
           localStorage.removeItem("productId")
@@ -88,7 +88,7 @@ export class ProductPageComponent implements OnInit {
       this.imageName = this.imageList[this.i]
     } else {
       this.imageName = this.imageList[this.i]
-      console.log(this.imageName)
+      // console.log(this.imageName)
     }
 
   }

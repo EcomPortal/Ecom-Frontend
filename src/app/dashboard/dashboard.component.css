@@ -6,18 +6,26 @@
 }
 
 .inside1{
-    background-color:rgb(99, 99, 168); 
+    background-color:blue; 
     width: 100%; 
     height: 50px; 
     overflow-x: hidden;
     overflow-y: hidden;
 }
 
+
 .dashboard_heading{
-    margin-left: 50px; 
+   display: flex;
+   justify-content: center;
      color: white; 
      margin-top: 7px; 
      font-size: 30px;
+}
+
+.menu_button{
+    
+    margin-top: -50px;
+    margin-left: 90px;
 }
 
 .maticon_add_to_cart{

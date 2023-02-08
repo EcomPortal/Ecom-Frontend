@@ -4,21 +4,22 @@
             (click)="backToSubproducts()">
     </div>
     <div class="heading_cart_logout_button_div">
-       
+
         <h1 class="sub_product_name">
             <b><i>{{subproductName}}</i></b>
         </h1>
         <mat-icon class="cart_icon" routerLink="/cart">shopping_cart</mat-icon>
         <button type="button" class="logout_button" (click)="logout()">Logout</button>
-      
+        
+
     </div>
     <div *ngIf="addButton" class="add_button_div">
-        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Search For a Product" (input)="getFilterdata()">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+            placeholder="&#61442;  Search For a Product" (input)="getFilterdata()">
         <mat-form-field appearance="fill" class="select_option">
             <mat-label>Select Price Range</mat-label>
             <mat-select>
-                <mat-option *ngFor="let item of productPriceList" [value]="item"
-                    (click)="setData(item)">
+                <mat-option *ngFor="let item of productPriceList" [value]="item" (click)="setData(item)">
                     {{item}}
                 </mat-option>
             </mat-select>
@@ -26,7 +27,7 @@
         <button class="add_button" (click)="addProduct()">+Add
             New</button>
     </div>
-    
+
 
     <div class="product_outer_div">
         <div class="product_inner_div" *ngFor="let item of filteredList">
