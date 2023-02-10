@@ -15,7 +15,7 @@ export class OrderPageComponent implements OnInit{
     this.loginService.ordersGetAll(localStorage.getItem("userId")).subscribe(
       data=>{
        this.orderData=data
-       console.log(this.orderData)
+      //  console.log(this.orderData)
       },
       error=>{
         console.log(error)
@@ -30,5 +30,13 @@ export class OrderPageComponent implements OnInit{
     localStorage.removeItem("userType")
     localStorage.removeItem('userId')
     this.router.navigate(['/'])
+  }
+
+  getHelp(id:any){
+    this.router.navigate(['helpPage',id])
+  }
+
+  navigateToHelpPage(){
+    this.router.navigate(['helpPage'])
   }
 }

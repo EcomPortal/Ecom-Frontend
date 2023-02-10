@@ -29,7 +29,8 @@
                 <h3 style="margin-top: -13px;"><b>Expected Delivery:</b> {{item.expectedDelivered}}</h3>
                 <h4 style="margin-top: -13px;"><b>Delivered To:</b> {{item.deliveredTo}}</h4>
                 <p style="margin-top: -13px;"><b>Payment Mode:</b> Cash On Delivery</p>
-                <a routerLink="" class="help_link"><p>Need Help?</p></a>
+                <p style="margin-top: -8px;"><b>Status: </b>Placed</p>
+                <a class="help_link" routerLink="" (click)="navigateToHelpPage()"><p>Need Help?</p></a>
             </div>
         </div>
         <div class="margin_div">

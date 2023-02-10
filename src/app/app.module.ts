@@ -32,6 +32,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { HelpPageComponent } from './help-page/help-page.component';
 
 
 
@@ -56,7 +57,8 @@ import { LoadingInterceptor } from './loading.interceptor';
     AddNewAddressComponent,
     PaymentPageComponent,
     OrderPageComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HelpPageComponent
   ],
   imports: [
     BrowserModule,

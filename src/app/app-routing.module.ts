@@ -6,6 +6,7 @@ import { AddressComponent } from './address/address.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 import { LoginComponentComponent } from './login/login-component/login-component.component';
 import { LogoutComponent } from './logout/logout.component';
 import { OrderPageComponent } from './order-page/order-page.component';
@@ -20,75 +21,79 @@ import { SubproductformComponent } from './subproductform/subproductform.compone
 
 const routes: Routes = [
   {
-    path:'',
-    component:LoginComponentComponent
+    path: '',
+    component: LoginComponentComponent
   },
   {
-    path:'registration',
-    component:RegistrationFormComponent
+    path: 'registration',
+    component: RegistrationFormComponent
   },
   {
-    path:'dashboard',
-    component:DashboardComponent,
-    canActivate:[RouterGuardServiceService]
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [RouterGuardServiceService]
   },
   {
-    path:'forgetPassword',
-    component:ForgetPasswordComponent
+    path: 'forgetPassword',
+    component: ForgetPasswordComponent
   },
   {
-    path:'logout',
-    component:LogoutComponent
+    path: 'logout',
+    component: LogoutComponent
   },
   {
-    path:'parentProduct',
-    component:ParentProductComponent,
-    canActivate:[RouterGuardServiceService]
+    path: 'parentProduct',
+    component: ParentProductComponent,
+    canActivate: [RouterGuardServiceService]
   },
   {
-    path:'subproduct/:id',
-    component:SubProductComponent,
-    canActivate:[RouterGuardServiceService]
+    path: 'subproduct/:id',
+    component: SubProductComponent,
+    canActivate: [RouterGuardServiceService]
   },
   {
-    path:'subProductAdd/:id',
-    component:SubproductformComponent,
-    canActivate:[RouterGuardServiceService]
+    path: 'subProductAdd/:id',
+    component: SubproductformComponent,
+    canActivate: [RouterGuardServiceService]
   },
   {
-    path:'productDetails/:id',
-    component:ProductDetailsComponent
+    path: 'productDetails/:id',
+    component: ProductDetailsComponent
   },
   {
-    path:'addProduct',
-    component:AddProductComponent
+    path: 'addProduct',
+    component: AddProductComponent
   },
   {
-    path:'addProduct/:id',
-    component:AddProductComponent
+    path: 'addProduct/:id',
+    component: AddProductComponent
   },
   {
-    path:'productPage/:id',
-    component:ProductPageComponent
+    path: 'productPage/:id',
+    component: ProductPageComponent
   },
   {
-    path:'cart',
-    component:CartComponentComponent
-  },{
-    path:'address',
-    component:AddressComponent
+    path: 'cart',
+    component: CartComponentComponent
+  }, {
+    path: 'address',
+    component: AddressComponent
   },
   {
-    path:'addNewAddress',
-    component:AddNewAddressComponent
+    path: 'addNewAddress',
+    component: AddNewAddressComponent
   },
   {
-    path:'paymentPage',
-    component:PaymentPageComponent
+    path: 'paymentPage',
+    component: PaymentPageComponent
   },
   {
-    path:'orderPage',
-    component:OrderPageComponent
+    path: 'orderPage',
+    component: OrderPageComponent
+  },
+  {
+    path: 'helpPage',
+    component: HelpPageComponent
   }
 ];
 

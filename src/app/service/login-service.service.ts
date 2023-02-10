@@ -44,9 +44,10 @@ export class Product {
   subProductId: number = 0
 
 }
-const header = new HttpHeaders().set(
-  "Authorization", "Bearer " + localStorage.getItem("token") || '{}'
-);
+// const header = new HttpHeaders().set(
+//   "Authorization", "Bearer " + localStorage.getItem("token") || '{}'
+// );
+const header=null
 @Injectable({
   providedIn: 'root'
 })
@@ -65,7 +66,8 @@ export class LoginServiceService {
   address: AddressAdd = new AddressAdd
   productBuy:ProdutBuy=new ProdutBuy
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://192.168.12.51:9090/'
+ 
+  baseUrl: string = 'http://192.168.12.41:9090/'
   //  baseUrl:string='http://192.168.29.128:9090/'
 
   login(user: any) {
@@ -89,100 +91,126 @@ export class LoginServiceService {
     localStorage.removeItem('token')
   }
   getParentProductData() {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get<ParentProduct>(this.baseUrl + 'getAll/parent/product', { headers: header })
   }
   addNewParentProduct(parentProduct: any) {
 
-    console.log(parentProduct)
+    // console.log(parentProduct)
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post<ParentProduct>(this.baseUrl + 'add/parent/product', parentProduct, { headers: header });
   }
 
   saveSubProduct(subProduct: any) {
 
-    console.log(this.baseUrl + "add/subProduct")
+    // console.log(this.baseUrl + "add/subProduct")
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post<SubProduct>(this.baseUrl + "add/subProduct", subProduct, { headers: header })
   }
 
   getSubProduct(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getAll/subProduct/' + id, { headers: header })
   }
 
   saveProduct(product: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post<Product>(this.baseUrl + 'add/product', product, { headers: header })
   }
 
   getAllProduct(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getAll/product/' + id, { headers: header })
   }
 
   getProductById(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getById/product/' + id, { headers: header })
   }
 
   updateProduct(product: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post<Product>(this.baseUrl + 'update/product', product, { headers: header })
   }
   deleteProduct(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.delete(this.baseUrl + 'delete/product/' + id, { headers: header })
   }
 
   getProductDetailsById(id: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getByUserId/productDescription/' + id, { headers: header })
   }
   generateOtp(email: string) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post(this.baseUrl + 'user/v1/generateOtp', email)
   }
 
   addToCart(cart: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post(this.baseUrl + 'add/cart', cart, { headers: header })
   }
   getCartItem(userId: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getByUserId/cart/' + userId, { headers: header })
   }
   removeFromCart(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.delete(this.baseUrl + 'delete/cart/' + id, { headers: header })
   }
 
   getAllState() {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getAll/state', { headers: header })
   }
 
   getAllCity(id: number) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'getAll/city/' + id, { headers: header })
   }
 
   saveAddress(address: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post(this.baseUrl + 'save/address', address, { headers: header })
   }
   getAddressList(id: any) {
-
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl + 'get/address/' + id, { headers: header })
   }
 
   orderProduct(productBuy:any){
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.post(this.baseUrl+'add/order',productBuy,{headers:header})
   }
 
   ordersGetAll(id:any){
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl+'getAll/order/'+id,{headers:header})
   }
 
   generatePdf(id:any){
+    let header=new HttpHeaders().set(
+      "Authorization", "Bearer " + localStorage.getItem("token") || '{}');
     return this.http.get(this.baseUrl+'generateinvoce/order/'+id,{headers:header})
   }
 }

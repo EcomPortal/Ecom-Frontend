@@ -69,6 +69,10 @@
   align-items: center;
   margin: 50px;
 }
+.item_main_div:hover{
+  box-shadow: 0 0 20px rgba(33,33,33,.2); 
+  border-radius: 80px;
+}
 
 .item_image{
   height: 200px; 
@@ -79,4 +83,10 @@
 .item_name{
   font-size: 20px;
   color: steelblue;
+}
+.menu_button{
+  margin-top: -50px;
+  margin-left: 90px;
+  float: right;
+  margin-right: 80px;
 }
