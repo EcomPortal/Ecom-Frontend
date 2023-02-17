@@ -11,6 +11,7 @@ export class OrderPageComponent implements OnInit{
 
   constructor(private router:Router,private loginService:LoginServiceService){}
   orderData:any=[]
+  displayStyle = "none";
   ngOnInit(){
     this.loginService.ordersGetAll(localStorage.getItem("userId")).subscribe(
       data=>{
@@ -38,5 +39,38 @@ export class OrderPageComponent implements OnInit{
 
   navigateToHelpPage(){
     this.router.navigate(['helpPage'])
+  }
+
+  openPopup(item:any) {
+    localStorage.setItem("orderId",item.id)
+    localStorage.setItem("productId",item.productId)
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    console.log("close  ")
+    this.displayStyle = "none";
+  }
+  cancelOrder(item:any){
+     console.log(item)
+     this.loginService.cancelorder(localStorage.getItem("orderId"),localStorage.getItem("productId")).subscribe(
+      data=>{
+        // this.orderData=data
+       //  console.log(this.orderData)
+       this.loginService.ordersGetAll(localStorage.getItem("userId")).subscribe(
+        data=>{
+         this.orderData=data
+        //  console.log(this.orderData)
+        },
+        error=>{
+          console.log(error)
+        }
+      );
+      this.displayStyle = "none";
+       },
+       error=>{
+         console.log(error)
+       }
+     );
+     
   }
 }

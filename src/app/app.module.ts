@@ -33,6 +33,7 @@ import { OrderPageComponent } from './order-page/order-page.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { HelpPageComponent } from './help-page/help-page.component';
+import { OrderModalComponent } from './order-modal/order-modal.component';
 
 
 
@@ -58,7 +59,8 @@ import { HelpPageComponent } from './help-page/help-page.component';
     PaymentPageComponent,
     OrderPageComponent,
     SpinnerComponent,
-    HelpPageComponent
+    HelpPageComponent,
+    OrderModalComponent
   ],
   imports: [
     BrowserModule,

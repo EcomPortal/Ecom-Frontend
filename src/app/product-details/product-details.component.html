@@ -8,8 +8,18 @@
         <h1 class="sub_product_name">
             <b><i>{{subproductName}}</i></b>
         </h1>
-        <mat-icon class="cart_icon" routerLink="/cart">shopping_cart</mat-icon>
-        <button type="button" class="logout_button" (click)="logout()">Logout</button>
+        <div class="menu_button">
+            <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+                [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/orderPage">Orders</button>
+                <button mat-menu-item routerLink="/cart">Cart</button>
+                <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+                <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+        </div>
         
 
     </div>
