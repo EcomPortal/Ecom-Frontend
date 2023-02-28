@@ -89,7 +89,8 @@
 .form_label_div{
     margin-left: 50px;
     margin-top: -28px;
-   
+   display: flex;
+   flex-direction: row;
 }
 
 .add_new_address_div{

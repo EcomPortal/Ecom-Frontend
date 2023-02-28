@@ -69,24 +69,25 @@
 .product_outer_div {
     display: flex;
     flex-wrap: wrap;
-    padding: 2%;
-    margin-left: 4%;
-   
-    margin-top: 3%;
+    margin: 20px;
+    margin-left: 5.5%;
+   margin-top: -10px;
+    
 }
 
 .product_inner_div {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20px;
     align-items: center;
     margin: 30px;
+    max-width: 200px;
 }
 
 .product_inner_div:hover{
     box-shadow: 0 0 20px rgba(33,33,33,.2); 
     border-radius: 40px;
+    max-width: 200px;
   }
 
 .three_dot_button_div {
