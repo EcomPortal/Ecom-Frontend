@@ -26,7 +26,12 @@
             <div class="product_details_inner_div">
                 <h3 style="font-size: 18px;margin-top: 2px"><b>{{item.productName}}</b></h3>
                 <h3 style="margin-top: -13px;"><b>Order Placed At:</b> {{item.orderAt}}</h3>
-                <h3 style="margin-top: -13px;"><b>Expected Delivery:</b> {{item.expectedDelivered}}</h3>
+                <div *ngIf="item.cancelledOn===null; else cancelData">
+                    <h3 style="margin-top: -13px;"><b>Expected Delivery:</b> {{item.expectedDelivered}}</h3>
+                </div>
+                <ng-template #cancelData>
+                    <h3 style="margin-top: -13px;color: red;"><b>Order Cancelled On:</b> {{item.cancelledOn}}</h3>
+                </ng-template>
                 <h4 style="margin-top: -13px;"><b>Delivered To:</b> {{item.deliveredTo}}</h4>
                 <p style="margin-top: -13px;"><b>Payment Mode:</b> Cash On Delivery</p>
                 <div *ngIf="item.orderStatus!='ORDER_CANCELLED_BY_USER'; else something">
@@ -37,9 +42,19 @@
                 </ng-template>
                 <!-- <a class="help_link" routerLink="" (click)="navigateToHelpPage()"><p>Need Help?</p></a> -->
                 <div class="track_cancel_button">
-                    <button mat-raised-button color="primary">Track Order</button>
-                    <button mat-raised-button color="warn" class="cancel_order_button" (click)="openPopup(item)">Cancel
-                        Order</button>
+                    <div class="track_order_button" *ngIf="item.orderStatus==='ORDER_CANCELLED_BY_USER';else elsePart">
+                        <button class="reorder_track_order_button" (click)="reOrder(item.productId)">Re-Order</button>
+                    </div>
+                    <ng-template #elsePart>
+                        <div class="track_order_button">
+                            <button class="reorder_track_order_button">Track Order</button>
+                        </div>
+                    </ng-template>
+                    <div class="cancel_button_div">
+                        <button mat-raised-button color="warn" class="cancel_order_button"
+                            (click)="openPopup(item)">Cancel
+                            Order</button>
+                    </div>
                     <!-- Modal -->
                     <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
                         <div class="modal-dialog" role="document">
@@ -62,6 +77,9 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="delete_icon_div">
+                <mat-icon class="delete_icon">delete_forever</mat-icon>
+            </div> -->
 
         </div>
         <div class="margin_div">

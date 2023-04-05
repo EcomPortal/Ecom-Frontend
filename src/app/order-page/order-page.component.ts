@@ -73,4 +73,9 @@ export class OrderPageComponent implements OnInit{
      );
      
   }
+  reOrder(id:any){
+    console.log(id)
+    localStorage.setItem("productId",id)
+    this.router.navigate(['address'])
+  }
 }

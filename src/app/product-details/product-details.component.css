@@ -84,11 +84,11 @@
     max-width: 200px;
 }
 
-.product_inner_div:hover{
+/* .product_inner_div:hover{
     box-shadow: 0 0 20px rgba(33,33,33,.2); 
     border-radius: 40px;
     max-width: 200px;
-  }
+  } */
 
 .three_dot_button_div {
     margin-left: 90%
@@ -103,6 +103,12 @@
     height: 200px;
     width: 200px;
     border-radius: 10px;
+}
+.product_image:hover{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(255, 30, 0); 
 }
 
 .product_name {

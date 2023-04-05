@@ -68,7 +68,7 @@ export class LoginServiceService {
   constructor(private http: HttpClient) { }
 
   // baseUrl: string = 'http://192.168.12.41:9090/'
-   baseUrl:string='http://192.168.29.128:9090/'
+   baseUrl:string='http://192.168.23.95:9090/'
 
   login(user: any) {
     this.isLoggedIn = true

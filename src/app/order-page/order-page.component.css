@@ -75,3 +75,28 @@
 .modal-title{
     font-size: 20px;
 }
+
+
+.cancel_button_div{
+   margin-left: 150px;
+   margin-top: -35px;
+}
+.reorder_track_order_button{
+    min-width: 130px;
+    height: 37px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+}
+
+.delete_icon_div{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    min-width: 400px;
+}
+
+.delete_icon{
+    height: 30px;
+    width: 40px;
+}

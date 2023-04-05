@@ -69,12 +69,19 @@
   align-items: center;
   margin: 50px;
 }
-.item_main_div:hover{
+/* .item_main_div:hover{
   box-shadow: 0 0 20px rgba(33,33,33,.2); 
   border-radius: 80px;
-}
+} */
 
 .item_image{
+  height: 200px; 
+  width: 200px;
+  border-radius: 50%;
+}
+
+.item_image:hover{
+  box-shadow: 0 0 20px red; 
   height: 200px; 
   width: 200px;
   border-radius: 50%;
